@@ -6,15 +6,9 @@ import { ServerComponent } from './server/server.component';
 import { ServersComponent } from './servers/servers.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ServerComponent,
-    ServersComponent
-  ],
-  imports: [
-    BrowserModule
-  ],
+  declarations: [AppComponent, ServerComponent, ServersComponent],
+  imports: [BrowserModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

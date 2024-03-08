@@ -1,1 +1,14 @@
-<p>servers works!</p>
+<p>servers a!</p>
+
+<app-server></app-server>
+<app-server></app-server>
+<button
+  type="button"
+  class="btn btn-outline-success"
+  onclick="onCreateServer()"
+  [disabled]="!allowNewServer"
+>
+  Erfolg
+</button>
+<p [innerText]="allowNewServer"></p>
+<p {{serverCreationStatus}}></p>
