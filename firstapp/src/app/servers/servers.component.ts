@@ -3,24 +3,39 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-servers',
   templateUrl: './servers.component.html',
-  styleUrl: './servers.component.css',
-})
-export class ServersComponent {
-  allowNewServer = false;
-  serverCreationStatus = 'No server was created!';
-  serverName = 'Testserver';
-  serverStatus = 'offline';
 
+  styles: [
+    `
+      .online {
+        color: white;
+      }
+    `,
+  ],
+})
+export class ServersComponent implements OnInit {
+  serverName = 'Server123';
+  serverID: number = 10;
+  serverStatus: string = 'Online';
+  allowNewServer = true;
+  serverCreated = false;
+  getServerStatus() {
+    return this.serverStatus;
+  }
+  onCreatedServer() {
+    this.serverCreated = true;
+    this.serverStatus = 'Server was created!  name is ' + this.serverName;
+  }
   constructor() {
-    setTimeout(() => {
-      this.allowNewServer = true;
-    }, 2000);
+    this.serverStatus = Math.random() > 0.9 ? 'Online' : 'Offline';
   }
-  ngOnInit() {
-    this.serverStatus = Math.random() > 0.5 ? 'online' : 'offline';
+
+  ngOnInit() {}
+
+  getColor() {
+    return this.serverStatus === 'Online' ? 'green' : 'red';
   }
-  onCreateServer() {
-    this.serverCreationStatus =
-      'Server was created! Name is ' + this.serverName;
+
+  onUpdateServerName(event: any) {
+    this.serverName = (<HTMLInputElement>event.target).value;
   }
 }

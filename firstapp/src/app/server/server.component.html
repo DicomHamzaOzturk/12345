@@ -1,4 +1,46 @@
-<p>server works!</p>
-<button type="button" class="btn btn-primary">Add Server</button>
-<hr />
-<p>Server with ID is {{ serverId }} and status is {{ getServerStatus() }}</p>
+<label>Server Name</label>
+<!-- FILEPATH: /d:/Source/Workspaces/Github/12345/firstapp/src/app/server/server.component.html -->
+<input
+  type="text"
+  class="form-control"
+  (input)="onUpdateServerName($event)"
+  title="Event Binding"
+/>
+<button
+  type="button"
+  class="btn btn-primary"
+  [disabled]="!allowNewServer"
+  (click)="onCreatedServer()"
+>
+  Add Server
+</button>
+<div>
+  <h1>Welcome to the Server Component!</h1>
+  <p>This is the HTML template for the server component.</p>
+
+  <p>Server Name: {{ serverName }}</p>
+  <p>Server Status: {{ serverStatus }}</p>
+  <p title="property binding">Server ID: {{ serverID }}</p>
+  <p>Server Status: {{ getServerStatus() }}</p>
+</div>
+
+<input
+  type="text"
+  class="form-control"
+  title="Two-way binding"
+  [(ngModel)]="serverName"
+/>
+
+<p *ngIf="serverCreated" title="using directives">
+  Server was Created ,server name is {{ serverName }}
+</p>
+
+<p *ngIf="serverCreated; else noServer" title="using directives">
+  Server was Created ,server name is {{ serverName }}
+</p>
+<ng-template #noServer> <p>No server Created!</p></ng-template>
+
+<p [ngStyle]="{ backgroundColor: getColor() }">
+  {{ "Server" }} with Id {{ serverID }} is {{ getServerStatus() }}
+</p>
+<app-server *ngFor="let server of servers"></app-server>

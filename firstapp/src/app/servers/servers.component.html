@@ -1,14 +1,5 @@
-<p>servers a!</p>
-
+<p>This is Servers</p>
 <app-server></app-server>
-<app-server></app-server>
-<button
-  type="button"
-  class="btn btn-outline-success"
-  onclick="onCreateServer()"
-  [disabled]="!allowNewServer"
->
-  Erfolg
-</button>
-<p [innerText]="allowNewServer"></p>
-<p {{serverCreationStatus}}></p>
+<p [ngStyle]="{ backgroundColor: getColor() }">
+  {{ "Server" }} with Id {{ serverID }} is {{ getServerStatus() }}
+</p>
